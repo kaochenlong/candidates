@@ -1,3 +1,10 @@
 <h1> 新增候選人 </h1>
 
+<%= form_for @candidate do |f| %>
+  姓名：<%= f.text_field :name %><br />
+  政黨：<%= f.text_field :party %><br />
+  年紀：<%= f.text_field :age %><br />
+  政見：<%= f.text_area :politics %><br />
+  <%= f.submit %><br />
+<% end %>
 
