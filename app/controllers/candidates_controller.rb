@@ -14,7 +14,7 @@ class CandidatesController < ApplicationController
     if @candidate.save
       redirect_to candidates_path
     else
-      # ....
+      render "new"
     end
   end
 
