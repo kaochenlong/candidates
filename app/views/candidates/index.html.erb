@@ -1,11 +1,5 @@
 <h1>候選人列表</h1>
 <%= link_to '新增候選人', new_candidate_path %>
 <ul>
-<% @candidates.each do |candidate| %>
-  <li>
-  <%= link_to candidate.name, candidate_path(candidate) %>
-  <%= link_to '編輯', edit_candidate_path(candidate) %>
-  <%= link_to '刪除', candidate_path(candidate), method: "delete", data: { confirm: "刪除嗎?!" } %>
-  </li>
-<% end %>
+  <%= render @candidates %>
 </ul>

@@ -1,24 +1,20 @@
 class CandidatesController < ApplicationController
+  before_action :find_candidate, only: [:show, :edit, :update, :destroy]
+
   def index
     @candidates = Candidate.all
   end
 
   def show
-    @candidate = Candidate.find_by(id: params[:id])
-    redirect_to candidates_path if @candidate.nil?
   end
 
   def edit
-    @candidate = Candidate.find_by(id: params[:id])
-    redirect_to candidates_path if @candidate.nil?
   end
 
   def update
-    @candidate = Candidate.find_by(id: params[:id])
-    redirect_to candidates_path if @candidate.nil?
-
     if @candidate.update(candidate_params)
-      redirect_to candidates_path
+      #flash[:notice] = "更新完成!"
+      redirect_to candidates_path, notice: "更新完成!"
     else
       render "edit"
     end
@@ -31,13 +27,23 @@ class CandidatesController < ApplicationController
   def create
     @candidate = Candidate.new(candidate_params)
     if @candidate.save
-      redirect_to candidates_path
+      redirect_to candidates_path, notice: "新增成功"
     else
       render "new"
     end
   end
 
+  def destroy
+    @candidate.destroy
+    redirect_to candidates_path, notice: "資料已刪除"
+  end
+
   private
+  def find_candidate
+    @candidate = Candidate.find_by(id: params[:id])
+    redirect_to candidates_path if @candidate.nil?
+  end
+
   def candidate_params
     params.require(:candidate).permit(:name, :party, :age, :politics)
   end

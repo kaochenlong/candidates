@@ -1,0 +1,5 @@
+<li>
+  <%= link_to candidate.name, candidate %>
+  <%= link_to '編輯', edit_candidate_path(candidate) %>
+  <%= link_to '刪除', candidate, method: "delete", data: { confirm: "刪除嗎?!" } %>
+</li>
