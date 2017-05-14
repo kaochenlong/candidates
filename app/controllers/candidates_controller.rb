@@ -4,6 +4,24 @@ class CandidatesController < ApplicationController
   end
 
   def show
+    @candidate = Candidate.find_by(id: params[:id])
+    redirect_to candidates_path if @candidate.nil?
+  end
+
+  def edit
+    @candidate = Candidate.find_by(id: params[:id])
+    redirect_to candidates_path if @candidate.nil?
+  end
+
+  def update
+    @candidate = Candidate.find_by(id: params[:id])
+    redirect_to candidates_path if @candidate.nil?
+
+    if @candidate.update(candidate_params)
+      redirect_to candidates_path
+    else
+      render "edit"
+    end
   end
 
   def new

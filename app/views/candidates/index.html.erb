@@ -3,9 +3,9 @@
 <ul>
 <% @candidates.each do |candidate| %>
   <li>
-  <%= candidate.name %>
+  <%= link_to candidate.name, candidate_path(candidate) %>
   <%= link_to '編輯', edit_candidate_path(candidate) %>
-  <%= link_to '刪除', candidate_path(candidate) %>
+  <%= link_to '刪除', candidate_path(candidate), method: "delete", data: { confirm: "刪除嗎?!" } %>
   </li>
 <% end %>
 </ul>
