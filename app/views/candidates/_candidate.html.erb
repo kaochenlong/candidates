@@ -1,5 +1,5 @@
 <li>
-  <%= candidate.votes %>票
+  <%= candidate.vote_logs.size %>票
   <%= link_to '投票', vote_candidate_path(candidate), method: "post", data: {confirm: "確定投給他嗎?"} %>
   <%= link_to candidate.info, candidate %>
   <%= link_to '編輯', edit_candidate_path(candidate) %>
